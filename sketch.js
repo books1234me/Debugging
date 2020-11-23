@@ -88,11 +88,14 @@ function mouseReleased(){
 
 function keyPressed(){
     if(keyCode === 32){
-        //slingshot.attach(bird.body);
+        bird.trajectory=[];
+        Matter.Body.setPosition(bird.body, {x: 200 , y: 50});
+        slingshot.attach(bird.body);
+        gameState = "onSling";
     }
 }
 async function getTime(){
-    var response = await fetch("https://worldtimeapi.org/api/timezone/Asia/Tokyo");
+    var response = await fetch("https://worldtimeapi.org/api/timezone/America/Chicago");
     var responseJSON=await response.json();
     var hr=responseJSON.datetime.slice(11,13);
     console.log(hr);
